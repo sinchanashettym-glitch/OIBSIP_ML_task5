@@ -1,0 +1,89 @@
+# Oasis Infobyte Internship — Task 5: Advertising Sales Prediction
+
+**Project:** Predict product `Sales` given advertising budgets for `TV`, `Radio`, and `Newspaper`.
+
+## 📚 Dataset
+
+* File name expected: `advertising.csv`
+* Required columns: `TV`, `Radio`, `Newspaper`, `Sales`
+* This dataset contains 139 rows of advertising budget and resulting sales.
+
+## 🔍 Objective
+
+Build a regression model to predict `Sales` from advertising budgets. Evaluate multiple algorithms and select the best-performing model.
+
+## 🛠️ What the Repository Contains
+
+* `oasis_infobyte_task5_advertising.py` — main runnable Python script that:
+
+  * loads the dataset,
+  * performs quick EDA (saves plots to `outputs/`),
+  * trains and tunes models (Linear Regression, Ridge, Lasso, Random Forest),
+  * evaluates models and selects the best one,
+  * saves the chosen model to `models/best_advertising_model.joblib`.
+
+* `outputs/` — generated plots and CSVs (pairwise plots, feature importances / coefficients).
+
+* `models/` — saved model artifacts.
+
+## ⚙️ Requirements
+
+```bash
+pip install pandas numpy matplotlib scikit-learn joblib
+```
+
+## ▶️ How to Run
+
+1. Place `advertising.csv` in the same folder as the script.
+2. Run:
+
+```bash
+python oasis_infobyte_task5_advertising.py
+```
+
+3. Outputs will be saved to `outputs/` and the trained model will be saved to `models/`.
+
+## 📈 Models Trained
+
+* **Linear Regression** (baseline)
+* **Ridge Regression** (Grid search for alpha)
+* **Lasso Regression** (Grid search for alpha)
+* **Random Forest Regressor** (Grid search for n_estimators & max_depth)
+
+Models are evaluated using RMSE, MAE, and R². The script selects the model with the lowest test RMSE.
+
+## 🧪 Example Predictions
+
+The script includes demo predictions (e.g., `(230.1, 37.8, 69.2) -> predicted Sales`).
+
+## 📁 File Structure (Recommended)
+
+```
+OIBSIP_Task5_Advertising/
+├── advertising.csv
+├── oasis_infobyte_task5_advertising.py
+├── README.md  <-- this file
+├── outputs/
+│   ├── sales_vs_tv.png
+│   ├── sales_vs_radio.png
+│   ├── sales_vs_newspaper.png
+│   ├── pairwise_matrix.png
+│   └── coefficients.csv or feature_importances.csv
+└── models/
+    └── best_advertising_model.joblib
+```
+
+## 📝 Notes & Tips
+
+* You can adjust `DATA_PATH` in the script if your CSV filename is different.
+* To speed up the GridSearch during experimentation, reduce the number of CV folds or shorten parameter grids.
+* If Random Forest performs best, check `outputs/feature_importances.csv` to see which advertising channel contributes most.
+
+---
+
+If you want, I can:
+
+* add badges and GitHub-ready frontmatter,
+* convert this into a `README.md` file inside your repo canvas,
+* or produce a Google Colab notebook with the same flow.
+  Which would you like?
